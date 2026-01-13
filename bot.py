@@ -1,0 +1,26 @@
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+from telegram.ext import Application, CommandHandler
+
+BOT_TOKEN = "8307012125:AAGKffeIRGn3AjzDFFHyPMJMMaLN2pNjPSU"
+
+async def start(update, context):
+    keyboard = [
+        [InlineKeyboardButton("📢 Telegram Channel", url="https://t.me/social_workars4")],
+        [InlineKeyboardButton("📺 YouTube Channel", url="https://youtube.com/@karim_tech_zone?si=P67VvpLaWBKsn46w")],
+        [InlineKeyboardButton("🤖 Official Bot", url="https://t.me/facebokidsellbd_bot")],
+        [InlineKeyboardButton("👤 Agent Bot", url="https://t.me/social_workars1_bot")],
+        [InlineKeyboardButton("📦 Backup Channel", url="https://t.me/+vmH9kgowHUI3NzI1")],
+        [InlineKeyboardButton("🆘 Report Channel", url="https://t.me/+p3hGmxzd5gY1YzI1")],
+        [InlineKeyboardButton("👑 Admin Contact", url="https://t.me/MD_Rezual_Karim")]
+    ]
+
+    reply_markup = InlineKeyboardMarkup(keyboard)
+
+    await update.message.reply_text(
+        "✅ Welcome to Social Workars Bot\n\n👇 নিচের বাটনগুলো ব্যবহার করুন",
+        reply_markup=reply_markup
+    )
+
+app = Application.builder().token(BOT_TOKEN).build()
+app.add_handler(CommandHandler("start", start))
+app.run_polling()
